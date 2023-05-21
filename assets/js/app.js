@@ -73,57 +73,83 @@ window.onload = function () {
   links.forEach((link, index) => {
     gsap.from(link, {
       delay: 1.8 + index * 0.2,
-      duration: 0.3,
+      duration: 0.8,
       autoAlpha: 0,
       ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
       y: -20
     });
   });
-};
 
-function Marquee(selector, speed) {
-  const parentSelector = document.querySelector(selector);
-  const clone = parentSelector.innerHTML;
-  const firstElement = parentSelector.children[0];
-  let i = 0;
-  let isMouseOver = false; // Variable pour suivre l'état de survol de la souris
-
-  // Arrêter le défilement lorsque la souris survole la section
-  parentSelector.addEventListener('mouseover', function () {
-    isMouseOver = true;
+  // Animer chaque compétence individuellement
+  skills.forEach((skill, index) => {
+    gsap.from(skill, {
+      delay: 1.8 + index * 0.2,
+      duration: 0.8,
+      autoAlpha: 0,
+      ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
+      y: -50
+    });
   });
 
-  // Reprendre le défilement lorsque la souris quitte la section
-  parentSelector.addEventListener('mouseout', function () {
-    isMouseOver = false;
-  });
+  function Marquee(selector, speed) {
+    const parentSelector = document.querySelector(selector);
+    const clone = parentSelector.innerHTML;
+    const firstElement = parentSelector.children[0];
+    let i = 0;
+    let isMouseOver = false; // Variable pour suivre l'état de survol de la souris
 
-  // Arrêter le défilement lorsque la souris survole les boutons
-  const buttons = document.querySelectorAll('.button__marquee');
-  buttons.forEach(function (button) {
-    button.addEventListener('mouseover', function () {
+    // Arrêter le défilement lorsque la souris survole la section
+    parentSelector.addEventListener('mouseover', function () {
       isMouseOver = true;
     });
 
-    button.addEventListener('mouseout', function () {
+    // Reprendre le défilement lorsque la souris quitte la section
+    parentSelector.addEventListener('mouseout', function () {
       isMouseOver = false;
     });
-  });
 
-  parentSelector.insertAdjacentHTML('beforeend', clone);
-  parentSelector.insertAdjacentHTML('beforeend', clone);
+    // Arrêter le défilement lorsque la souris survole les boutons
+    const buttons = document.querySelectorAll('.button__marquee');
+    buttons.forEach(function (button) {
+      button.addEventListener('mouseover', function () {
+        isMouseOver = true;
+      });
 
-  setInterval(function () {
-    if (!isMouseOver) {
-      firstElement.style.marginLeft = `-${i}px`;
-      if (i > firstElement.clientWidth) {
-        i = 0;
+      button.addEventListener('mouseout', function () {
+        isMouseOver = false;
+      });
+    });
+
+    parentSelector.insertAdjacentHTML('beforeend', clone);
+    parentSelector.insertAdjacentHTML('beforeend', clone);
+
+    setInterval(function () {
+      if (!isMouseOver) {
+        firstElement.style.marginLeft = `-${i}px`;
+        if (i > firstElement.clientWidth) {
+          i = 0;
+        }
+        i = i + speed;
       }
-      i = i + speed;
-    }
-  }, 0);
-}
+    }, 0);
+  }
 
-window.addEventListener('load', function () {
-  Marquee('.marquee', 0.4);
-});
+  Marquee('.marquee', 0.2);
+
+  const callto = document.querySelector('.reveal__callto');
+  const callto__letters = document.querySelectorAll('.callto__letters');
+
+  gsap.to(callto__letters, {
+    scrollTrigger: {
+      trigger: callto,
+      start: "top 55%",
+      end: "top 20%",
+    },
+    rotateX: 0,
+    translateY: 0,
+    duration: .6,
+    stagger: .016,
+    opacity: 1,
+    ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
+  });
+};

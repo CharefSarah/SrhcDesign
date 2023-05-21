@@ -132,7 +132,10 @@ nav li {
   letter-spacing: -0.049em;
   text-align: center;
   display: flex;
+
 }
+
+
 .title__letters {
   will-change: transform;
   opacity: 0;
@@ -186,16 +189,22 @@ nav li {
   width: auto;
   line-height: 191.5%;
   font-size: 3rem;
-
-
+  text-align: center;
 }
 
 .reveal__callto {
   line-height: 191.5%;
   font-size: 3rem;
   color: var(--clr_light);
+  display : flex;
+  padding-top: calc(4 * 1.195rem);
+}
 
-
+.callto__letters{
+  will-change: transform;
+  opacity: 0;
+  transform-origin : bottom;
+  transform: rotateX(90deg) translateY(-240%);
 }
 
 .line {
