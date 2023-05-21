@@ -85,6 +85,7 @@ img {
 
 header {
   height: 100vh;
+  margin-bottom: 8rem;
 }
 
 nav {
@@ -179,7 +180,7 @@ nav li {
   color: var(--clr_light);
   width: auto;
   line-height: 191.5%;
-  font-size: 2rem;
+  font-size: 3rem;
 
 
 }
@@ -210,7 +211,7 @@ nav li {
 }
 
 .section__marquee {
-  height: 30vh;
+  height: 50vh;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -242,7 +243,7 @@ nav li {
   position: absolute;
   background-color: var(--clr_mid1);
   color: var(--clr_light);
-  font-size: 1rem;
+  font-size: 1.5rem;
   padding: 1em 2em;
   border-radius: 500px;
   margin-left: 2rem;
@@ -255,12 +256,67 @@ nav li {
   margin-left: 1rem;
   z-index: 2;
 }
+
 .button__marquee:nth-child(3) {
   position: absolute;
-  margin-top: 0,5rem;
+  margin-top: 0, 5rem;
   margin-left: -3rem;
   z-index: 2;
 }
+
 .button__marquee a:hover {
   color: var(--clr_light);
+}
+
+.card {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--clr_mid1);
+  border-radius: 76px;
+}
+
+.card__content {
+
+  height: 45vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-inline: 4rem;
+
+
+}
+
+.card__content h4 {
+  color: var(--clr_light);
+  font-size: 2.5rem;
+  font-family: "Machina";
+  line-height: 191.5%;
+  margin-bottom: 2rem;
+}
+
+.card__content p {
+  font-size: 1rem;
+  line-height: 191.5%;
+  margin-bottom: 2rem;
+  width: 40%;
+
+
+}
+
+button {
+  background-color: var(--clr_dark);
+  color: var(--clr_light);
+  border-radius: 500px;
+  border: transparent;
+  border: 1px solid var(--clr_light);
+  width: 180px;
+  height: 40px;
+
 }
