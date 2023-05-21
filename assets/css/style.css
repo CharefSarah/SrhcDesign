@@ -132,10 +132,14 @@ nav li {
   letter-spacing: -0.049em;
   text-align: center;
   display: flex;
+<<<<<<< HEAD
+}
+=======
 
 }
 
 
+>>>>>>> 6e50a373e89671e260d697db817abded83386112
 .title__letters {
   will-change: transform;
   opacity: 0;
