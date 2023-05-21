@@ -12,7 +12,7 @@ body {
   color: var(--clr_mid2);
   font-family: "Telegraph";
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 400;
   overflow-x: hidden;
   list-style: none;
   scroll-behavior: smooth;
@@ -118,6 +118,10 @@ li {
 nav li {
   margin-left: 2rem;
 }
+.accent{
+  color: var(--clr_light);
+  font-family: "Machina";
+}
 
 .title {
   font-family: "Machina";
@@ -127,6 +131,13 @@ nav li {
   width: 100%;
   letter-spacing: -0.049em;
   text-align: center;
+  display: flex;
+}
+.title__letters {
+  will-change: transform;
+  opacity: 0;
+  transform-origin : bottom;
+  transform: rotateX(90deg) translateY(-240%);
 }
 
 .header__bottom {
@@ -136,28 +147,22 @@ nav li {
   flex-direction: column;
   justify-content: end;
   align-items: center;
+
 }
 
 .header__botton__container {
   height: 20vh;
   width: 100%;
-}
-
-.list__header {
-  height: 5rem;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
-.list__header:last-child {
-  padding-left: 2rem;
-
+.header__botton__container h2{
+  line-height: 191.5%;
+  font-size: 2,5rem;
 }
 
-.list__header li {
-  font-size: 3rem;
-  margin-right: 2rem;
-}
 
 .text__reveal {
 
@@ -320,3 +325,8 @@ button {
   height: 40px;
 
 }
+
+
+
+
+
