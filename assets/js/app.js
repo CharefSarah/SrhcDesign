@@ -92,46 +92,49 @@ window.onload = function () {
   });
 
   function Marquee(selector, speed) {
-    const parentSelector = document.querySelector(selector);
-    const clone = parentSelector.innerHTML;
-    const firstElement = parentSelector.children[0];
-    let i = 0;
-    let isMouseOver = false; // Variable pour suivre l'état de survol de la souris
+    const parentSelectors = document.querySelectorAll(selector);
 
-    // Arrêter le défilement lorsque la souris survole la section
-    parentSelector.addEventListener('mouseover', function () {
-      isMouseOver = true;
-    });
+    parentSelectors.forEach(parentSelector => {
+      const clone = parentSelector.innerHTML;
+      const firstElement = parentSelector.children[0];
+      let i = 0;
+      let isMouseOver = false; // Variable pour suivre l'état de survol de la souris
 
-    // Reprendre le défilement lorsque la souris quitte la section
-    parentSelector.addEventListener('mouseout', function () {
-      isMouseOver = false;
-    });
-
-    // Arrêter le défilement lorsque la souris survole les boutons
-    const buttons = document.querySelectorAll('.button__marquee');
-    buttons.forEach(function (button) {
-      button.addEventListener('mouseover', function () {
+      // Arrêter le défilement lorsque la souris survole la section
+      parentSelector.addEventListener('mouseover', function () {
         isMouseOver = true;
       });
 
-      button.addEventListener('mouseout', function () {
+      // Reprendre le défilement lorsque la souris quitte la section
+      parentSelector.addEventListener('mouseout', function () {
         isMouseOver = false;
       });
-    });
 
-    parentSelector.insertAdjacentHTML('beforeend', clone);
-    parentSelector.insertAdjacentHTML('beforeend', clone);
+      // Arrêter le défilement lorsque la souris survole les boutons
+      const buttons = parentSelector.querySelectorAll('.button__marquee');
+      buttons.forEach(function (button) {
+        button.addEventListener('mouseover', function () {
+          isMouseOver = true;
+        });
 
-    setInterval(function () {
-      if (!isMouseOver) {
-        firstElement.style.marginLeft = `-${i}px`;
-        if (i > firstElement.clientWidth) {
-          i = 0;
+        button.addEventListener('mouseout', function () {
+          isMouseOver = false;
+        });
+      });
+
+      parentSelector.insertAdjacentHTML('beforeend', clone);
+      parentSelector.insertAdjacentHTML('beforeend', clone);
+
+      setInterval(function () {
+        if (!isMouseOver) {
+          firstElement.style.marginLeft = `-${i}px`;
+          if (i > firstElement.clientWidth) {
+            i = 0;
+          }
+          i = i + speed;
         }
-        i = i + speed;
-      }
-    }, 0);
+      }, 0);
+    });
   }
 
   Marquee('.marquee', 0.2);

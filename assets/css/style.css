@@ -78,9 +78,16 @@ img {
 
 }
 
+
+@font-face {
+  font-family: 'Matrix';
+  src: url("../fonts/MatrixSans-Video.ttf") format('TrueType');
+  font-weight: 400;
+
+}
+
 ::selection {
   color: var(--clr_accent);
-  background: var(--clr_dark);
 }
 
 header {
@@ -124,16 +131,20 @@ nav li {
   font-family: "Machina";
 }
 
+
 .title {
   font-family: "Machina";
   color: var(--clr_light);
-  font-size: calc(16550vw/ 1249);
+  font-size: calc(15500vw/ 1249);
   font-weight: 300;
   width: 100%;
   letter-spacing: -0.049em;
   text-align: center;
   display: flex;
-
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  
 }
 
 .title__letters {
@@ -141,10 +152,21 @@ nav li {
   opacity: 0;
   transform-origin: bottom;
   transform: rotateX(90deg) translateY(-240%);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.matrix {
+  font-family: "Matrix";
+  letter-spacing: 0em;
+  margin-top: -37px;
+
 }
 
-.header__bottom {
 
+.header__bottom {
   height: 65vh;
   display: flex;
   flex-direction: column;
@@ -241,6 +263,12 @@ nav li {
   border-bottom: 3px solid var(--clr_mid1);
   display: flex;
   transform: rotate(-3.62deg);
+
+}
+
+.revesed {
+
+  transform: rotate(3.62deg);
 
 }
 
