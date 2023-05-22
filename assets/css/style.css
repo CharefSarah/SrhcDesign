@@ -44,7 +44,7 @@ img {
   --clr_mid1: #181818;
   --clr_mid2: #626262;
   --clr_light: #ffffff;
-  --clr_accent: #39ffba;
+  --clr_accent: #r;
 }
 
 ::-webkit-scrollbar {
@@ -135,7 +135,6 @@ nav li {
   display: flex;
 
 }
-
 
 .title__letters {
   will-change: transform;
