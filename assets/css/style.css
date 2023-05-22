@@ -132,14 +132,10 @@ nav li {
   letter-spacing: -0.049em;
   text-align: center;
   display: flex;
-<<<<<<< HEAD
-}
-=======
 
 }
 
 
->>>>>>> 6e50a373e89671e260d697db817abded83386112
 .title__letters {
   will-change: transform;
   opacity: 0;
@@ -247,7 +243,11 @@ nav li {
   transform: rotate(-3.62deg);
 
 }
+.revesed {
 
+  transform: rotate(3.62deg);
+
+}
 .marquee h3 {
   padding-block: 1rem;
   font-size: 8rem;
