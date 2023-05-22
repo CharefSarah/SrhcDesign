@@ -144,6 +144,8 @@ window.onload = function () {
       trigger: callto,
       start: "top 55%",
       end: "top 20%",
+      toggleActions: "restart none none reverse"
+
     },
     rotateX: 0,
     translateY: 0,
@@ -153,3 +155,24 @@ window.onload = function () {
     ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
   });
 };
+
+const card = document.querySelector('.card');
+const card__container = document.querySelector('.card__container');
+
+
+let tl__card = gsap.timeline({
+  scrollTrigger: {
+    trigger: card__container,
+    start: 'top 60%',
+    end: 'top 10%',
+    toggleActions: "restart none none reset"
+  },
+})
+
+tl__card.to(card, {
+  rotateX: 0,
+  translateY: 0,
+  duration: 2.2,
+  opacity: 1,
+  ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
+})
