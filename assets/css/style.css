@@ -44,7 +44,7 @@ img {
   --clr_mid1: #181818;
   --clr_mid2: #626262;
   --clr_light: #ffffff;
-  --clr_accent: #r;
+  --clr_accent: #2720f2;
 }
 
 ::-webkit-scrollbar {
@@ -89,6 +89,9 @@ img {
 ::selection {
   color: var(--clr_accent);
 }
+
+
+
 
 header {
   height: 100vh;
@@ -373,8 +376,6 @@ button {
 
 
 
-
-
 /* ------------------------------- Nav_link v2 ------------------------------ */
 .nav__link {
   height: 30px;
@@ -422,3 +423,4 @@ button {
 .nav__link:hover .nav__link__2 {
   transform: rotate(0);
 }
+
