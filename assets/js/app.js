@@ -159,63 +159,118 @@ window.onload = function () {
   });
 };
 
-const card = document.querySelector('.card');
-const card__container = document.querySelector('.card__container');
+// const card = document.querySelector('.card');
+// const card__container = document.querySelector('.card__container');
 
 
-let tl__card = gsap.timeline({
-  scrollTrigger: {
-    trigger: card__container,
-    start: 'top 60%',
-    end: 'top 10%',
-    toggleActions: "restart none none reset"
-  },
-})
+// let tl__card = gsap.timeline({
+//   scrollTrigger: {
+//     trigger: card__container,
+//     start: 'top 60%',
+//     end: 'top 10%',
+//     toggleActions: "restart none none reset"
+//   },
+// })
 
-tl__card.to(card, {
-  rotateX: 0,
-  translateY: 0,
-  duration: 2.2,
-  opacity: 1,
-  ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
-})
+// tl__card.to(card, {
+//   rotateX: 0,
+//   translateY: 0,
+//   duration: 2.2,
+//   opacity: 1,
+//   ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
+// })
 
 
-$(function(){
+// $(function(){
   
-  let x, y;
-  const mousemove = ({ clientX, clientY }) => (x = clientX, y = clientY);
-  const dist = (x1, y1, x2, y2) => Math.sqrt(Math.abs(x1 - x2) + Math.abs(y1 - y2));
-  const points = [];
-  const MIN_DIST = 1;
-  const MAX_POINTS = 10;
-  const svgns = 'http://www.w3.org/2000/svg';
-  let { width, height } = svg.getBoundingClientRect();
+//   let x, y;
+//   const mousemove = ({ clientX, clientY }) => (x = clientX, y = clientY);
+//   const dist = (x1, y1, x2, y2) => Math.sqrt(Math.abs(x1 - x2) + Math.abs(y1 - y2));
+//   const points = [];
+//   const MIN_DIST = 1;
+//   const MAX_POINTS = 10;
+//   const svgns = 'http://www.w3.org/2000/svg';
+//   let { width, height } = svg.getBoundingClientRect();
   
-  svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+//   svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
   
-  addEventListener('resize', () => {
-    const r = svg.getBoundingClientRect();
-    width = r.width; height = r.height;
-    svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-  });
+//   addEventListener('resize', () => {
+//     const r = svg.getBoundingClientRect();
+//     width = r.width; height = r.height;
+//     svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+//   });
   
-  function frame() {
-    requestAnimationFrame(frame);
-    if (!x || !y) return;
-    if (!points.length) return points.push([x, y]);
-    const [px, py] = points[points.length - 1];
-    const d = dist(x, y, px, py);
-    if (d < MIN_DIST) return;
-    points.push([x, y]);
-    const pathString = points.reduce((acc, [x, y]) => {
-      return acc + ` ${x},${y}`
-    }, '');
-    polyline.setAttribute('points', pathString);
-    if (points.length > MAX_POINTS) points.shift();
-  }
+//   function frame() {
+//     requestAnimationFrame(frame);
+//     if (!x || !y) return;
+//     if (!points.length) return points.push([x, y]);
+//     const [px, py] = points[points.length - 1];
+//     const d = dist(x, y, px, py);
+//     if (d < MIN_DIST) return;
+//     points.push([x, y]);
+//     const pathString = points.reduce((acc, [x, y]) => {
+//       return acc + ` ${x},${y}`
+//     }, '');
+//     polyline.setAttribute('points', pathString);
+//     if (points.length > MAX_POINTS) points.shift();
+//   }
 
-  addEventListener('mousemove', mousemove);
-  requestAnimationFrame(frame);
+//   addEventListener('mousemove', mousemove);
+//   requestAnimationFrame(frame);
   
+// });
+
+
+
+
+/* ---------------------------------- GRID ---------------------------------- */
+let cells = [];
+
+function generateGrid() {
+    var gridContainer = document.getElementById("grid-container");
+    var gridWidth = document.documentElement.scrollWidth;
+    var gridHeight = document.documentElement.scrollHeight;
+
+    var cellSize = 45; // Taille de chaque cellule de la grille
+
+    var numColumns = Math.floor(gridWidth / cellSize);
+    var numRows = Math.floor(gridHeight / cellSize);
+
+    for (var row = 0; row < numRows; row++) {
+        for (var col = 0; col < numColumns; col++) {
+            var cell = document.createElement("div");
+            cell.classList.add("grid-cell");
+            gridContainer.appendChild(cell);
+        }
+    }
+
+    cells = Array.from(document.querySelectorAll(".grid-cell")); // Convertit la NodeList en tableau
+    return cells;
+}
+
+window.addEventListener("load", generateGrid);
+
+window.addEventListener("load", () => {
+    cells.forEach((cell) => {
+
+        cell.addEventListener("mouseover", () => {
+            let cell_tl = gsap.timeline();
+            cell_tl.to(cell, {
+                duration: 0.1,
+                backgroundColor: "#fff",
+                ease: "power2.inOut"
+            });
+        });
+
+
+        cell.addEventListener('mouseout', () => {
+            let cell_tl = gsap.timeline();
+            cell_tl.to(cell, {
+                duration: .5,
+                backgroundColor: 'transparent',
+                ease: "power2.Out"
+            })
+        });
+
+    });
 });

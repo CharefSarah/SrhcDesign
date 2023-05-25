@@ -16,8 +16,7 @@ body {
   overflow-x: hidden;
   list-style: none;
   scroll-behavior: smooth;
-
-
+  min-height : 100%;
 }
 
 .container {
@@ -147,7 +146,7 @@ nav li {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  pointer-events : none;
+  pointer-events: none;
 }
 
 .title__letters {
@@ -161,6 +160,7 @@ nav li {
   justify-content: center;
   line-height: 1;
 }
+
 .matrix {
   font-family: "Matrix";
   letter-spacing: 0em;
@@ -424,3 +424,13 @@ button {
   transform: rotate(0);
 }
 
+/* ---------------------------------- GRID ---------------------------------- */
+#grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(45px, 1fr));
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 0;
+}
