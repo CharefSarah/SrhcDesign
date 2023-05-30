@@ -46,9 +46,11 @@ window.onload = function () {
 
   // Sélectionnez les éléments que vous voulez animer
   const h1 = document.querySelector('h1');
-  const h2__content = document.querySelectorAll('.title span');
+  const h2__content = document.querySelectorAll(' .title span');
   const links = document.querySelectorAll('li a');
-  const skills = document.querySelectorAll('.skills li');
+  const small = document.querySelectorAll(' h3');
+  const gallery = document.querySelector('.container__slider .right'); // Container de la galerie
+ 
 
   // Commencez l'animation pour le h2 dès que la page est chargée
   gsap.to(h2__content, {
@@ -62,34 +64,44 @@ window.onload = function () {
   });
 
   gsap.from(h1, {
-    delay: 1.8,
+    delay: 0.8,
     duration: 0.3,
     autoAlpha: 0,
     ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
     y: -20
   });
+  gsap.from(small, {
+    delay: 2.2,
+    duration: .7,
+    autoAlpha: 0,
+    stagger: .02,
+    opacity: 1,
+    ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
+    y: -20
+  });
+  gsap.from(gallery, {
+    delay: 2.6,
+    duration: .7,
+    autoAlpha: 0,
+    stagger: .02,
+    opacity: 1,
+    ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
+    y: -20
+  });
+
 
   // Animer chaque lien individuellement
   links.forEach((link, index) => {
     gsap.from(link, {
       delay: 1.8 + index * 0.2,
-      duration: 0.8,
+      duration: 0.5,
       autoAlpha: 0,
       ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
       y: -20
     });
   });
 
-  // Animer chaque compétence individuellement
-  skills.forEach((skill, index) => {
-    gsap.from(skill, {
-      delay: 1.8 + index * 0.2,
-      duration: 0.8,
-      autoAlpha: 0,
-      ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
-      y: -50
-    });
-  });
+
 
   function Marquee(selector, speed) {
     const parentSelectors = document.querySelectorAll(selector);
@@ -136,141 +148,116 @@ window.onload = function () {
       }, 0);
     });
   }
-
-  Marquee('.marquee', 0.2);
-
-  const callto = document.querySelector('.reveal__callto');
-  const callto__letters = document.querySelectorAll('.callto__letters');
-
-  gsap.to(callto__letters, {
-    scrollTrigger: {
-      trigger: callto,
-      start: "top 55%",
-      end: "top 20%",
-      toggleActions: "restart none none reverse"
-
-    },
-    rotateX: 0,
-    translateY: 0,
-    duration: .6,
-    stagger: .016,
-    opacity: 1,
-    ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
-  });
 };
+ 
+const container = document.querySelector('.container__slider'); // Container global pour ecouter l'evenement du scroll
+const gallery = document.querySelector('.container__slider .right'); // Container de la galerie
+const images = document.querySelectorAll('.img_container'); // Array avec nos 5 images
+// return: [img_1,img_2,img_3,img_4,img_5]
+const pseudo_links = document.querySelectorAll('.left ul li .marker'); // Array avec nos 5 markers
+// return: [marker_1,marker_2,marker_3,marker_4,marker_5]
+const pseudo_links_parent = document.querySelectorAll('.left ul li'); // Array avec nos 5 liens
+// return: [li_1,li_2,li_3,li_4,li_5]
+// ---------------
+var isScrolling = false; // Variable pour suivre l'etat du scroll
+let isActive = 0; // Variable pour tracké quel images est actuellement affiché.
 
-// const card = document.querySelector('.card');
-// const card__container = document.querySelector('.card__container');
-
-
-// let tl__card = gsap.timeline({
-//   scrollTrigger: {
-//     trigger: card__container,
-//     start: 'top 60%',
-//     end: 'top 10%',
-//     toggleActions: "restart none none reset"
-//   },
-// })
-
-// tl__card.to(card, {
-//   rotateX: 0,
-//   translateY: 0,
-//   duration: 2.2,
-//   opacity: 1,
-//   ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
-// })
-
-
-// $(function(){
-  
-//   let x, y;
-//   const mousemove = ({ clientX, clientY }) => (x = clientX, y = clientY);
-//   const dist = (x1, y1, x2, y2) => Math.sqrt(Math.abs(x1 - x2) + Math.abs(y1 - y2));
-//   const points = [];
-//   const MIN_DIST = 1;
-//   const MAX_POINTS = 10;
-//   const svgns = 'http://www.w3.org/2000/svg';
-//   let { width, height } = svg.getBoundingClientRect();
-  
-//   svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-  
-//   addEventListener('resize', () => {
-//     const r = svg.getBoundingClientRect();
-//     width = r.width; height = r.height;
-//     svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-//   });
-  
-//   function frame() {
-//     requestAnimationFrame(frame);
-//     if (!x || !y) return;
-//     if (!points.length) return points.push([x, y]);
-//     const [px, py] = points[points.length - 1];
-//     const d = dist(x, y, px, py);
-//     if (d < MIN_DIST) return;
-//     points.push([x, y]);
-//     const pathString = points.reduce((acc, [x, y]) => {
-//       return acc + ` ${x},${y}`
-//     }, '');
-//     polyline.setAttribute('points', pathString);
-//     if (points.length > MAX_POINTS) points.shift();
-//   }
-
-//   addEventListener('mousemove', mousemove);
-//   requestAnimationFrame(frame);
-  
-// });
-
-
-
-
-/* ---------------------------------- GRID ---------------------------------- */
-let cells = [];
-
-function generateGrid() {
-    var gridContainer = document.getElementById("grid-container");
-    var gridWidth = document.documentElement.scrollWidth;
-    var gridHeight = document.documentElement.scrollHeight;
-
-    var cellSize = 45; // Taille de chaque cellule de la grille
-
-    var numColumns = Math.floor(gridWidth / cellSize);
-    var numRows = Math.floor(gridHeight / cellSize);
-
-    for (var row = 0; row < numRows; row++) {
-        for (var col = 0; col < numColumns; col++) {
-            var cell = document.createElement("div");
-            cell.classList.add("grid-cell");
-            gridContainer.appendChild(cell);
-        }
+container.addEventListener('wheel', (e) => {
+    // Si la fonction est déja en cours d'execution, on bloque tout nouveaux lancements.
+    if (isScrolling) {
+        return;
     }
 
-    cells = Array.from(document.querySelectorAll(".grid-cell")); // Convertit la NodeList en tableau
-    return cells;
-}
+    // Hauteur de l'écran, pour savoir de combien on doit scroller.
+    // On l'enregistre a ce moment la pour s'adapté au resize de l'écran.
+    let height = window.innerHeight;
 
-window.addEventListener("load", generateGrid);
-
-window.addEventListener("load", () => {
-    cells.forEach((cell) => {
-
-        cell.addEventListener("mouseover", () => {
-            let cell_tl = gsap.timeline();
-            cell_tl.to(cell, {
-                duration: 0.1,
-                backgroundColor: "#fff",
-                ease: "power2.inOut"
-            });
+    // DeltaY mesure le sens de scroll et l'inégalité sur isActive permet de ne pas scroll en dehors de l'array.
+    // Si on monte et qu'on est pas déja en haut : 
+    if (e.deltaY < 0 && isActive > 0) {
+        // Scroll vers le haut
+        isScrolling = true; // On bloque l'eventuel relance de la fonction
+        pseudo_links[isActive].classList.remove('active'); // On toggles les classes actives et enregistre le changement de isActive.
+        isActive = isActive - 1;
+        pseudo_links[isActive].classList.add('active');
+        // On anime l scroll vers le haut.
+        gsap.to(gallery, {
+            duration: .5,
+            scrollTop: '-=' + height,
+            onComplete: function () {
+                setTimeout(function () {
+                    isScrolling = false;
+                }, 450);
+            }
         });
 
+        // De même si on descend et qu'on est pas déja en bas :
+    } else if (e.deltaY > 0 && isActive < 4) {
+        //Scrolling Down
+        isScrolling = true;
+        pseudo_links[isActive].classList.remove('active');
+        isActive = isActive + 1;
+        pseudo_links[isActive].classList.add('active');
 
-        cell.addEventListener('mouseout', () => {
-            let cell_tl = gsap.timeline();
-            cell_tl.to(cell, {
-                duration: .5,
-                backgroundColor: 'transparent',
-                ease: "power2.Out"
-            })
+        console.log(isActive);
+
+        gsap.to(gallery, {
+            duration: .5,
+            scrollTop: '+=' + height,
+            onComplete: function () {
+                setTimeout(function () {
+                    isScrolling = false;
+                }, 450);
+            }
         });
 
-    });
+    } else {
+        // Console log si ca bloque
+        console.log('Bloqué');
+    }
 });
+
+
+pseudo_links_parent.forEach((link, index) => {
+    // Pour chaque lien en bas a gauche on ajouter un listener : 
+    link.addEventListener('click', () => {
+        pseudo_links.forEach((pseudo_link) => {
+            if (pseudo_link.classList.contains('active')) {
+                pseudo_link.classList.remove('active');
+            }
+        });
+
+        pseudo_links[index].classList.add('active');
+        isActive = index;
+        let num = link.getAttribute('data-num');
+        if (isScrolling) {
+            return;
+        }
+        let height = window.innerHeight;
+        let toScroll = (height * num);
+        gsap.to(gallery, {
+            duration: .5,
+            scrollTop: toScroll,
+            onComplete: function () {
+                setTimeout(function () {
+                    isScrolling = false;
+                }, 450);
+            }
+        });
+    });
+
+    return isActive;
+});
+
+gsap.registerPlugin(ScrollTrigger);
+let innerHeight = window.innerHeight;
+gsap.to(container, {
+    scrollTrigger: {
+        trigger: container,
+        start: "top top",
+        end: '+=' + innerHeight * 1.5,
+        scrub: true,
+        pin: true,
+        anticipatePin: 3,
+    },
+})
