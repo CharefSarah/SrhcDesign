@@ -88,7 +88,7 @@ img {
 /* ------------------------------- ISSA NAV  !!!!!------------------------------ */
 
 nav {
-  height: 8vh;
+  height: 13vh;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -179,7 +179,7 @@ nav li {
 
 
 header {
-  height: calc(85vh - 8vh);
+  height: calc(85vh - 13vh);
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -320,7 +320,7 @@ header {
 .slider__button {
   height: 120px;
   width: 240px;
-  color: white;
+  color: var(--clr_light);
   letter-spacing: 0.125em;
   font-size: 1.5rem;
   font-weight: 700;

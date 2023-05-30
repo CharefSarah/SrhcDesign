@@ -153,6 +153,7 @@ window.onload = function () {
 const container = document.querySelector('.container__slider'); // Container global pour ecouter l'evenement du scroll
 const gallery = document.querySelector('.container__slider .right'); // Container de la galerie
 const images = document.querySelectorAll('.img_container'); // Array avec nos 5 images
+
 // return: [img_1,img_2,img_3,img_4,img_5]
 const pseudo_links = document.querySelectorAll('.left ul li .marker'); // Array avec nos 5 markers
 // return: [marker_1,marker_2,marker_3,marker_4,marker_5]
@@ -234,7 +235,7 @@ pseudo_links_parent.forEach((link, index) => {
             return;
         }
         let height = window.innerHeight;
-        let toScroll = (height * num);
+        let toScroll = ( height * num);
         gsap.to(gallery, {
             duration: .5,
             scrollTop: toScroll,
@@ -255,9 +256,9 @@ gsap.to(container, {
     scrollTrigger: {
         trigger: container,
         start: "top top",
-        end: '+=' + innerHeight * 1.5,
+        end: '-=' + innerHeight * 1.5,
         scrub: true,
         pin: true,
-        anticipatePin: 3,
+        anticipatePin: 3.4,
     },
 })
