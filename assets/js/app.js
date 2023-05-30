@@ -50,7 +50,7 @@ window.onload = function () {
   const links = document.querySelectorAll('li a');
   const small = document.querySelectorAll(' h3');
   const gallery = document.querySelector('.container__slider .right'); // Container de la galerie
- 
+
 
   // Commencez l'animation pour le h2 dès que la page est chargée
   gsap.to(h2__content, {
@@ -149,115 +149,101 @@ window.onload = function () {
     });
   }
 };
- 
-const container = document.querySelector('.container__slider'); // Container global pour ecouter l'evenement du scroll
-const gallery = document.querySelector('.container__slider .right'); // Container de la galerie
-const images = document.querySelectorAll('.img_container'); // Array avec nos 5 images
-// return: [img_1,img_2,img_3,img_4,img_5]
-const pseudo_links = document.querySelectorAll('.left ul li .marker'); // Array avec nos 5 markers
-// return: [marker_1,marker_2,marker_3,marker_4,marker_5]
-const pseudo_links_parent = document.querySelectorAll('.left ul li'); // Array avec nos 5 liens
-// return: [li_1,li_2,li_3,li_4,li_5]
+
+const container = document.querySelector('.container__slider');
+const gallery = document.querySelector('.container__slider .right');
+const images = document.querySelectorAll('.img_container');
+const pseudo_links = document.querySelectorAll('.left ul li .marker');
+const pseudo_links_parent = document.querySelectorAll('.left ul li');
 // ---------------
 var isScrolling = false; // Variable pour suivre l'etat du scroll
 let isActive = 0; // Variable pour tracké quel images est actuellement affiché.
 
 container.addEventListener('wheel', (e) => {
-    // Si la fonction est déja en cours d'execution, on bloque tout nouveaux lancements.
-    if (isScrolling) {
-        return;
-    }
 
-    // Hauteur de l'écran, pour savoir de combien on doit scroller.
-    // On l'enregistre a ce moment la pour s'adapté au resize de l'écran.
-    let height = window.innerHeight;
+  if (isScrolling) {
+    return;
+  }
 
-    // DeltaY mesure le sens de scroll et l'inégalité sur isActive permet de ne pas scroll en dehors de l'array.
-    // Si on monte et qu'on est pas déja en haut : 
-    if (e.deltaY < 0 && isActive > 0) {
-        // Scroll vers le haut
-        isScrolling = true; // On bloque l'eventuel relance de la fonction
-        pseudo_links[isActive].classList.remove('active'); // On toggles les classes actives et enregistre le changement de isActive.
-        isActive = isActive - 1;
-        pseudo_links[isActive].classList.add('active');
-        // On anime l scroll vers le haut.
-        gsap.to(gallery, {
-            duration: .5,
-            scrollTop: '-=' + height,
-            onComplete: function () {
-                setTimeout(function () {
-                    isScrolling = false;
-                }, 450);
-            }
-        });
+  let height = window.innerHeight;
+  if (e.deltaY < 0 && isActive > 0) {
+    isScrolling = true;
+    pseudo_links[isActive].classList.remove('active');
+    isActive = isActive - 1;
+    pseudo_links[isActive].classList.add('active');
 
-        // De même si on descend et qu'on est pas déja en bas :
-    } else if (e.deltaY > 0 && isActive < 4) {
-        //Scrolling Down
-        isScrolling = true;
-        pseudo_links[isActive].classList.remove('active');
-        isActive = isActive + 1;
-        pseudo_links[isActive].classList.add('active');
-
-        console.log(isActive);
-
-        gsap.to(gallery, {
-            duration: .5,
-            scrollTop: '+=' + height,
-            onComplete: function () {
-                setTimeout(function () {
-                    isScrolling = false;
-                }, 450);
-            }
-        });
-
-    } else {
-        // Console log si ca bloque
-        console.log('Bloqué');
-    }
+    gsap.to(gallery, {
+      duration: .5,
+      scrollTop: '-=' + height,
+      onComplete: function () {
+        setTimeout(function () {
+          isScrolling = false;
+          console.log(gallery.scrollTop)
+          console.log(isScrolling)
+        }, 450);
+      }
+    });
+  } else if (e.deltaY > 0 && isActive < 4) {
+    isScrolling = true;
+    pseudo_links[isActive].classList.remove('active');
+    isActive = isActive + 1;
+    pseudo_links[isActive].classList.add('active');
+    console.log(gallery.scrollTop)
+    gsap.to(gallery, {
+      duration: .5,
+      scrollTop: '+=' + height,
+      onComplete: function () {
+        setTimeout(function () {
+          isScrolling = false;
+          console.log(gallery.scrollTop)
+        }, 450);
+      }
+    });
+  } else {
+    // Console log si ca bloque
+    console.log('Bloqué');
+  }
 });
 
-
 pseudo_links_parent.forEach((link, index) => {
-    // Pour chaque lien en bas a gauche on ajouter un listener : 
-    link.addEventListener('click', () => {
-        pseudo_links.forEach((pseudo_link) => {
-            if (pseudo_link.classList.contains('active')) {
-                pseudo_link.classList.remove('active');
-            }
-        });
-
-        pseudo_links[index].classList.add('active');
-        isActive = index;
-        let num = link.getAttribute('data-num');
-        if (isScrolling) {
-            return;
-        }
-        let height = window.innerHeight;
-        let toScroll = (height * num);
-        gsap.to(gallery, {
-            duration: .5,
-            scrollTop: toScroll,
-            onComplete: function () {
-                setTimeout(function () {
-                    isScrolling = false;
-                }, 450);
-            }
-        });
+  link.addEventListener('click', () => {
+    pseudo_links.forEach((pseudo_link) => {
+      if (pseudo_link.classList.contains('active')) {
+        pseudo_link.classList.remove('active');
+      }
     });
+    pseudo_links[index].classList.add('active');
+    isActive = index;
+    let num = link.getAttribute('data-num');
+    if (isScrolling) {
+      return;
+    }
+    let height = window.innerHeight;
+    let toScroll = (height * num);
+    gsap.to(gallery, {
+      duration: .5,
+      scrollTop: toScroll,
+      onComplete: function () {
+        setTimeout(function () {
+          isScrolling = false;
+        }, 450);
+      }
+    });
+  });
 
-    return isActive;
+  return isActive;
 });
 
 gsap.registerPlugin(ScrollTrigger);
 let innerHeight = window.innerHeight;
 gsap.to(container, {
-    scrollTrigger: {
-        trigger: container,
-        start: "top top",
-        end: '+=' + innerHeight * 1.5,
-        scrub: true,
-        pin: true,
-        anticipatePin: 3,
-    },
-})
+  scrollTrigger: {
+    trigger: container,
+    start: "top top",
+    end: '+=' + innerHeight * 1.5,
+    scrub: true,
+    pin: true,
+    anticipatePin: 1,
+    markers: true
+  },
+});
