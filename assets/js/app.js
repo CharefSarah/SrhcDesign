@@ -162,7 +162,6 @@ let isActive = 0; // Variable pour tracké quel images est actuellement affiché
 container.addEventListener('wheel', (e) => {
 
   const containerPosition = container.getBoundingClientRect().top;
-  console.log(containerPosition);
 
   if (isScrolling) {
     return;
@@ -181,9 +180,7 @@ container.addEventListener('wheel', (e) => {
         onComplete: function () {
           setTimeout(function () {
             isScrolling = false;
-            console.log(gallery.scrollTop)
-            console.log(isScrolling)
-          }, 450);
+          }, 800);
         }
       });
     } else if (e.deltaY > 0 && isActive < 4) {
@@ -191,20 +188,16 @@ container.addEventListener('wheel', (e) => {
       pseudo_links[isActive].classList.remove('active');
       isActive = isActive + 1;
       pseudo_links[isActive].classList.add('active');
-      console.log(gallery.scrollTop)
       gsap.to(gallery, {
         duration: .5,
         scrollTop: '+=' + height,
         onComplete: function () {
           setTimeout(function () {
-            isScrolling = false;
-            console.log(gallery.scrollTop)
-          }, 450);
+            isScrolling = false
+          }, 800);
         }
       });
     } else {
-      // Console log si ca bloque
-      console.log('Bloqué');
     }
   }
 });
@@ -244,10 +237,10 @@ gsap.to(container, {
   scrollTrigger: {
     trigger: container,
     start: "top top",
-    end: '+=' + innerHeight * 3,
+    end: '+=' + innerHeight * 8,
     scrub: true,
     pin: true,
-    anticipatePin: 0.5,
+    anticipatePin: 0.08,
   },
 });
 

@@ -20,7 +20,7 @@ body {
 }
 
 .container {
-  padding-inline: 3rem;
+  padding-inline: 8rem;
 }
 
 ul,
@@ -39,9 +39,9 @@ img {
 }
 
 :root {
-  --clr_dark: #0E0E0E;
-  --clr_mid1: #181818;
-  --clr_mid2: #626262;
+  --clr_dark: #0c0c0c;
+  --clr_mid1: #151515;
+  --clr_mid2: #727272;
   --clr_light: #ffffff;
   --clr_accent: #20f274;
 }
@@ -49,18 +49,15 @@ img {
 
 
 ::-webkit-scrollbar {
-  width: 7px;
-  height: 5px;
+  width: 0px;
+  height: 0px;
 }
 
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--clr_font_accent);
-  border-radius: 10px;
-}
+
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--clr_bg);
@@ -74,14 +71,51 @@ img {
 
 @font-face {
   font-family: 'Telegraph';
-  src: url("../fonts/PPTelegraf-Ultralight.otf") format('OpenType');
+  src: url("../fonts/PPTelegraf-Regular.otf") format('OpenType');
 
 }
+
 
 
 ::selection {
   background-color: var(--clr_accent);
   color: var(--clr_light);
+}
+
+.btn {
+  background-color: var(--clr_mid1);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 38px;
+  border: none;
+  border-radius: 500px;
+}
+
+
+.nav__btn {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr_mid2);
+  font-family: "Machina";
+}
+
+.btn .nav__btn:hover {
+  background-color: var(--clr_light);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 38px;
+  border: none;
+  border-radius: 500px;
 }
 
 
@@ -93,6 +127,10 @@ nav {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+nav h1 {
+  font-family: "Machina";
 }
 
 nav h1,
@@ -179,7 +217,7 @@ nav li {
 
 
 header {
-  height: calc(85vh - 13vh);
+  height: calc(90vh - 13vh);
   display: flex;
   flex-direction: column;
   justify-content: start;
@@ -192,7 +230,7 @@ header {
   font-size: calc(6800vw/ 1249);
   font-weight: 300;
   width: 100%;
-  letter-spacing: -0.049em;
+  letter-spacing: -0.040em;
   text-align: center;
   display: flex;
   flex-direction: row;
@@ -234,11 +272,12 @@ header {
 
 .container__slider {
   position: relative;
-  height: 100vh;
-  width: 100%;
+  height: 85vh;
+  width: calc(100% - 8rem);
   display: flex;
   flex-direction: row;
 }
+
 .container__slider .left {
   position: absolute;
   top: 0;
@@ -255,10 +294,17 @@ header {
   padding-top: 3rem;
 
 }
+
+
+.left h3 {
+  font-family: "Machina";
+}
+
 .container__slider .left ul {
   color: var(--clr_light);
   list-style: none;
 }
+
 .container__slider .left ul li {
   display: flex;
   padding-bottom: 20px;
@@ -266,12 +312,13 @@ header {
   flex-direction: row;
   align-items: center;
   gap: 15px;
-  font-family: sans-serif;
   color: var(--clr_mid2);
 }
+
 .container__slider .left ul li .marker {
   width: 25px;
 }
+
 .container__slider .left ul li .marker .inner {
   width: 0;
   transition: width 0.4s ease-in-out;
@@ -279,15 +326,19 @@ header {
   height: 2px;
   background: var(--clr_light);
 }
+
 .container__slider .left ul li .marker.active {
   color: var(--clr_light);
 }
+
 .container__slider .left ul li .marker.active .inner {
   width: 25px;
 }
-.container__slider .left ul li .marker.active + p {
+
+.container__slider .left ul li .marker.active+p {
   color: var(--clr_light);
 }
+
 .container__slider .right {
   width: 80%;
   margin-left: 20%;
@@ -295,24 +346,30 @@ header {
   overflow-y: hidden;
   padding-right: 3rem;
 }
+
 .container__slider .right .img_container {
   background-size: cover;
   background-position: center;
   width: 100%;
   height: 100%;
 }
+
 .container__slider .right .img_1 {
   background-image: url("../images/projet/7335cb136886893.620572445e03b.jpg");
 }
+
 .container__slider .right .img_2 {
   background-image: url("../images/projet/backpack-group-13-1410x704@2x.webp");
 }
+
 .container__slider .right .img_3 {
   background-image: url("../images/projet/backpack-group-7-1410x704@2x.webp");
 }
+
 .container__slider .right .img_4 {
   background-image: url("../images/projet/backpack-group-9.webp");
 }
+
 .container__slider .right .img_5 {
   background-image: url("../images/projet/backpack-group-23.webp");
 }
@@ -332,6 +389,7 @@ header {
   justify-content: center;
   z-index: 3;
   line-height: 2.5rem;
+  font-family: "Machina";
 }
 
 .filter {
@@ -346,11 +404,85 @@ header {
 
 
 
+/* ------------------------------- ISSA SECTION ABOUT  !!!!!------------------------------ */
+
+.about {
+  border-top: 2px solid var(--clr_mid1);
+  height: 60vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.about__left {
+  height: 100%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+
+}
+
+.about__left h3 {
+  font-family: "Machina";
+}
+
+.about__left p {
+  margin-block: 1.5rem;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  line-height: 191.5%;
+  color: var(--clr_light);
+  width: 80%;
+  
+
+}
+
+.about__right {
+  height: 100%;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+
+}
+
+.about__right h3 {
+  margin-bottom: 1.5rem;
+  font-family: "Machina";
+}
+
+.about__right ul {
+  width: 10%;
+}
+
+.about__right li {
+  width: 100%;
+
+}
+
+.about__right li a {
+  text-align: right;
+  width: 100%;
+
+}
+
+.about__right>.nav__link {
+  color: var(--clr_mid2);
+  letter-spacing: 0.125em;
+}
+
+.about__right>.nav__link:hover {
+  color: var(--clr_light);
+}
+
 /* ------------------------------- ISSA SECTION REVEAL  !!!!!------------------------------ */
 
-
 .text__reveal {
-  height: 110vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -373,20 +505,6 @@ header {
   text-align: center;
 }
 
-.reveal__callto {
-  line-height: 1.5rem;
-  font-size: 3rem;
-  color: var(--clr_light);
-  display: flex;
-  padding-top: calc(4 * 1.195rem);
-}
-
-.callto__letters {
-  will-change: transform;
-  opacity: 0;
-  transform-origin: bottom;
-  transform: rotateX(90deg) translateY(-240%);
-}
 
 .line {
 
@@ -405,3 +523,82 @@ header {
   z-index: 2;
 
 }
+
+/* ------------------------------- ISSA SECTION SERVICES  !!!!!------------------------------ */
+.services {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.services__content {
+  height: 70%;
+  width: 100%;
+}
+
+.services h3 {
+  color: var(--clr_mid2);
+  font-family: "Machina";
+  padding-bottom: 2rem;
+  width: 100%;
+  text-align: left;
+
+}
+
+.service {
+  width: 100%;
+  height: 33.33%;
+  border-top: 2px solid var(--clr_mid1);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.service__left {
+  height: 100%;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+
+.service__left h4 {
+  font-size: 3rem;
+  line-height: 191.5%;
+  font-family: "Machina";
+  color: var(--clr_light);
+  letter-spacing: 0.125em;
+}
+
+.service__right {
+  height: 100%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+  text-align: justify;
+  padding-block: 2rem;
+}
+
+.service__right p {
+  height: 100%;
+  line-height: 191.5%;
+  width: 40%;
+  color: var(--clr_light);
+  display: flex;
+  align-items: center;
+
+}
+
+
+
+/* ------------------------------- ISSA SECTION SERVICES<p  !!!!!------------------------------ */
