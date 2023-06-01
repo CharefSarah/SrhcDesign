@@ -230,15 +230,30 @@ header {
 
 /* ------------------------------- ISSA SECTION PROJET  !!!!!------------------------------ */
 
-
+.container__slider__parent {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .container__slider {
   position: relative;
-  height: 100vh;
+  height: 85vh;
   width: 100%;
   display: flex;
   flex-direction: row;
 }
+
+.container__slider::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+.container__slider::-webkit-scrollbar-track {
+  background: transparent;
+}
+
 .container__slider .left {
   position: absolute;
   top: 0;
@@ -255,10 +270,12 @@ header {
   padding-top: 3rem;
 
 }
+
 .container__slider .left ul {
   color: var(--clr_light);
   list-style: none;
 }
+
 .container__slider .left ul li {
   display: flex;
   padding-bottom: 20px;
@@ -266,12 +283,13 @@ header {
   flex-direction: row;
   align-items: center;
   gap: 15px;
-  font-family: sans-serif;
   color: var(--clr_mid2);
 }
+
 .container__slider .left ul li .marker {
   width: 25px;
 }
+
 .container__slider .left ul li .marker .inner {
   width: 0;
   transition: width 0.4s ease-in-out;
@@ -279,15 +297,19 @@ header {
   height: 2px;
   background: var(--clr_light);
 }
+
 .container__slider .left ul li .marker.active {
   color: var(--clr_light);
 }
+
 .container__slider .left ul li .marker.active .inner {
   width: 25px;
 }
-.container__slider .left ul li .marker.active + p {
+
+.container__slider .left ul li .marker.active+p {
   color: var(--clr_light);
 }
+
 .container__slider .right {
   width: 80%;
   margin-left: 20%;
@@ -295,25 +317,32 @@ header {
   overflow-y: hidden;
   padding-right: 3rem;
 }
+
 .container__slider .right .img_container {
   background-size: cover;
   background-position: center;
   width: 100%;
   height: 100%;
+  scroll-snap-align: center;
 }
-.container__slider .right .img_1 {
+
+.container__slider .right .img_0 {
   background-image: url("../images/projet/7335cb136886893.620572445e03b.jpg");
 }
-.container__slider .right .img_2 {
+
+.container__slider .right .img_1 {
   background-image: url("../images/projet/backpack-group-13-1410x704@2x.webp");
 }
-.container__slider .right .img_3 {
+
+.container__slider .right .img_2 {
   background-image: url("../images/projet/backpack-group-7-1410x704@2x.webp");
 }
-.container__slider .right .img_4 {
+
+.container__slider .right .img_3 {
   background-image: url("../images/projet/backpack-group-9.webp");
 }
-.container__slider .right .img_5 {
+
+.container__slider .right .img_4 {
   background-image: url("../images/projet/backpack-group-23.webp");
 }
 
