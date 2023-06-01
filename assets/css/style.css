@@ -39,10 +39,10 @@ img {
 }
 
 :root {
-  --clr_dark: #0c0c0c;
-  --clr_mid1: #151515;
-  --clr_mid2: #727272;
-  --clr_light: #ffffff;
+  --clr_light: #080808;
+  --clr_mid1: #dcdfdb;
+  --clr_mid2: #969696;
+  --clr_dark: #f2f2f2;
   --clr_accent: #20f274;
 }
 
@@ -102,12 +102,13 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--clr_mid2);
+  color: var(--clr_light);
   font-family: "Machina";
 }
 
 .btn .nav__btn:hover {
-  background-color: var(--clr_light);
+  background-color: var(--clr_accent);
+  color: var(--clr_light);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -118,6 +119,9 @@ img {
   border-radius: 500px;
 }
 
+.accent{
+  color: var(--clr_accent);
+}
 
 /* ------------------------------- ISSA NAV  !!!!!------------------------------ */
 
@@ -141,7 +145,7 @@ nav a {
 
 
 nav a:hover {
-  color: var(--clr_light);
+  color: var(--clr_accent);
 }
 
 h1>a {
@@ -323,8 +327,8 @@ header {
   width: 0;
   transition: width 0.4s ease-in-out;
   margin-left: 8px;
-  height: 2px;
-  background: var(--clr_light);
+  height: 1px;
+  background: var(--clr_accent);
 }
 
 .container__slider .left ul li .marker.active {
@@ -377,7 +381,7 @@ header {
 .slider__button {
   height: 120px;
   width: 240px;
-  color: var(--clr_light);
+  color: var(--clr_dark);
   letter-spacing: 0.125em;
   font-size: 1.5rem;
   font-weight: 700;
@@ -392,22 +396,12 @@ header {
   font-family: "Machina";
 }
 
-.filter {
-  position: absolute;
-  height: 100%;
-  width: 80%;
-  right: 0;
-  pointer-events: none;
-  background: linear-gradient(0deg, rgba(14, 14, 14, 0.6862745098) 0%, rgba(0, 0, 0, 0.199) 32%, rgba(255, 255, 255, 0) 100%);
-  z-index: 2;
-}
-
 
 
 /* ------------------------------- ISSA SECTION ABOUT  !!!!!------------------------------ */
 
 .about {
-  border-top: 2px solid var(--clr_mid1);
+  border-top: 1px solid var(--clr_mid1);
   height: 60vh;
   display: flex;
   flex-direction: row;
@@ -476,7 +470,7 @@ header {
 }
 
 .about__right>.nav__link:hover {
-  color: var(--clr_light);
+  color: var(--clr_accent);
 }
 
 /* ------------------------------- ISSA SECTION REVEAL  !!!!!------------------------------ */
@@ -536,7 +530,7 @@ header {
 }
 
 .services__content {
-  height: 70%;
+  height: 80%;
   width: 100%;
 }
 
@@ -552,7 +546,7 @@ header {
 .service {
   width: 100%;
   height: 33.33%;
-  border-top: 2px solid var(--clr_mid1);
+  border-top: 1px solid var(--clr_mid1);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -566,7 +560,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
+  color: var(--clr_accent);
 }
 
 
@@ -580,7 +574,7 @@ header {
 
 .service__right {
   height: 100%;
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: end;
@@ -592,7 +586,7 @@ header {
 .service__right p {
   height: 100%;
   line-height: 191.5%;
-  width: 40%;
+  width: 50%;
   color: var(--clr_light);
   display: flex;
   align-items: center;
