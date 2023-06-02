@@ -20,7 +20,7 @@ body {
 }
 
 .container {
-  padding-inline: 8rem;
+  padding-inline: 6rem;
 }
 
 ul,
@@ -38,14 +38,30 @@ img {
   image-rendering: crisp-edges !important;
 }
 
+ @media (prefers-color-scheme: light) {
 :root {
   --clr_light: #080808;
   --clr_mid1: #dcdfdb;
-  --clr_mid2: #969696;
-  --clr_dark: #f2f2f2;
-  --clr_accent: #20f274;
+  --clr_mid2: #676767;
+  --clr_dark: #F1F1F1;
+  --clr_accent: #20f274;}
+  .slider__button {
+    color: var(--clr_dark);
+  }
 }
 
+
+@media (prefers-color-scheme: dark) {
+  :root {
+  --clr_dark: #0d0d0d;
+  --clr_mid1: #222222;
+  --clr_mid2: #a2a2a2;
+  --clr_light: #f7f5f5;
+  --clr_accent: #20f274;}
+  .slider__button {
+    color: var(--clr_light);
+  }
+ }
 
 
 ::-webkit-scrollbar {
@@ -107,7 +123,7 @@ img {
 }
 
 .btn .nav__btn:hover {
-  background-color: var(--clr_accent);
+  background-color: var(--clr_mid2);
   color: var(--clr_light);
   display: flex;
   flex-direction: row;
@@ -145,7 +161,7 @@ nav a {
 
 
 nav a:hover {
-  color: var(--clr_accent);
+  color: var(--clr_light);
 }
 
 h1>a {
@@ -221,14 +237,18 @@ nav li {
 
 
 header {
-  height: calc(90vh - 13vh);
+  height: calc(70vh - 13vh);
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: center;
+  align-items: center;
+
+ 
 
 }
 
 .title {
+
   font-family: "Machina";
   color: var(--clr_light);
   font-size: calc(6800vw/ 1249);
@@ -240,10 +260,11 @@ header {
   flex-direction: row;
   pointer-events: none;
   padding-right: 0.06em;
+  
 }
 
 .title:nth-child(1) {
-  padding-top: 10rem;
+  padding-top: 2rem;
 }
 
 .title:nth-child(2) {
@@ -333,7 +354,7 @@ header {
   transition: width 0.4s ease-in-out;
   margin-left: 8px;
   height: 1px;
-  background: var(--clr_accent);
+  background: var(--clr_light);
 }
 
 .container__slider .left ul li .marker.active {
@@ -364,29 +385,28 @@ header {
 }
 
 .container__slider .right .img_0 {
-  background-image: url("../images/projet/7335cb136886893.620572445e03b.jpg");
+  background-image: url("../images/projet/c23cd6170423823.645d5c901b00b.webp");
 }
 
 .container__slider .right .img_1 {
-  background-image: url("../images/projet/backpack-group-13-1410x704@2x.webp");
+  background-image: url("../images/projet/162683113077869.60210a59c2c4a.webp");
 }
 
 .container__slider .right .img_2 {
-  background-image: url("../images/projet/backpack-group-7-1410x704@2x.webp");
+  background-image: url("../images/projet/original-4a54eed82258abc56136bc9dde1a9955-min.gif");
 }
 
 .container__slider .right .img_3 {
-  background-image: url("../images/projet/backpack-group-9.webp");
+  background-image: url("../images/projet/e04245133487053.61bee67ff2ab5.jpg.webp");
 }
 
 .container__slider .right .img_4 {
-  background-image: url("../images/projet/backpack-group-23.webp");
+  background-image: url("../images/projet/5_cp_hoarding.webp");
 }
 
 .slider__button {
   height: 120px;
   width: 240px;
-  color: var(--clr_dark);
   letter-spacing: 0.125em;
   font-size: 1.5rem;
   font-weight: 700;
@@ -475,7 +495,7 @@ header {
 }
 
 .about__right>.nav__link:hover {
-  color: var(--clr_accent);
+  color: var(--clr_light);
 }
 
 /* ------------------------------- ISSA SECTION REVEAL  !!!!!------------------------------ */
@@ -565,7 +585,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  color: var(--clr_accent);
+  color: var(--clr_mid2);
 }
 
 
