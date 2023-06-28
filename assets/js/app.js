@@ -1,151 +1,129 @@
-// Définition des variables et initialisation de l'animation SplitType
-let typeSplit;
+const nav = document.querySelector('#nav');
+const content__container__left = document.querySelector('.content__container__left')
+const first__link = document.querySelector('.first__link');
+const second__link = document.querySelector('.second__link');
+const last__link = document.querySelector('.last__link');
+const nav__cursor = document.querySelector('.nav__cursor');
+const navLinks = document.querySelectorAll('.container__about__link > a');
+const hoverlay = document.querySelector('.hoverlay');
+const about__nav = document.querySelector('.about__nav');
+const about__nav1 = document.querySelector('.about__nav1');
+const product = document.querySelector('.nav__link__product');
+const support = document.querySelector('.nav__link__support');
+const about = document.querySelector('.nav__link__about');
+const link1 = document.querySelector('.about__link1');
+const link2 = document.querySelector('.about__link2');
+const link3 = document.querySelector('.about__link3');
+const navRight = document.querySelector('.about__nav__right');
 
-function runSplit() {
-  typeSplit = new SplitType(".split__lines", {
-    types: "lines, words"
+// Définit les couleurs de fond
+const color1 = '#2964DE';
+const color2 = 'var(--clr_blue2)';
+
+link1.style.backgroundColor = color2;
+first__link.style.backgroundColor = color2;
+
+
+hoverlay.addEventListener('mouseover', () => {
+    nav__cursor.classList.remove('visible');
+    nav__cursor.classList.remove('invisible');
+    about__nav1.classList.remove('visible')
+    about__nav1.classList.add('invisible')
+    about__nav.classList.remove('visible')
+    about__nav.classList.add('invisible')
+    hoverlay.classList.remove('visible')
+    hoverlay.classList.add('invisible')
   });
-  $(".line").append("<div class='line__mask'></div>");
-  createAnimation();
-}
 
-// Gestion du redimensionnement de la fenêtre
-let windowWidth = $(window).innerWidth();
-window.addEventListener("resize", function () {
-  if (windowWidth !== $(window).innerWidth()) {
-    windowWidth = $(window).innerWidth();
-    typeSplit.revert();
-    runSplit();
-  }
+
+
+  support.addEventListener('mouseover', () => {
+    nav__cursor.style.transform = "translateX(310%)";
+    nav__cursor.style.width = "25%";
+    nav__cursor.classList.add('visible');
+    about__nav.classList.remove('visible');
+    about__nav.classList.add('invisible')
+    about__nav1.classList.remove('visible')
+    about__nav1.classList.add('invisible')
+    hoverlay.classList.add('invisible')
+    hoverlay.classList.remove('visible')
+  });
+
+
+about.addEventListener('mouseover', () => {
+  nav__cursor.style.transform = "translateX(150%)";
+  nav__cursor.style.width = "25%";
+  nav__cursor.classList.add('visible');
+  about__nav1.classList.remove('visible')
+  about__nav1.classList.add('invisible')
+  about__nav.classList.remove('invisible')
+  about__nav.classList.add('visible')
+  hoverlay.classList.remove('invisible')
+  hoverlay.classList.add('visible')
+});
+product.addEventListener('mouseover', () => {
+  nav__cursor.style.transform = "translateX(0%)";
+  nav__cursor.style.width = "25%";
+  nav__cursor.classList.add('visible');
+  about__nav.classList.remove('visible')
+  about__nav.classList.add('invisible')
+  about__nav1.classList.remove('invisible')
+  about__nav1.classList.add('visible')
+  hoverlay.classList.remove('invisible')
+  hoverlay.classList.add('visible')
+  
+
 });
 
-// Création de l'animation avec GSAP et ScrollTrigger
-gsap.registerPlugin(ScrollTrigger);
 
-function createAnimation() {
-  $(".line").each(function (index) {
-    let tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: $(this),
-        start: "top 70%",
-        end: "bottom bottom",
-        scrub: 4
-      }
-    });
-    let delay = index * 2;
-    tl.to($(this).find(".line__mask"), {
-      width: "0%",
-      duration: 3,
-      delay: delay
-    });
-  });
-}
+link1.addEventListener('mouseover', () => {
+  link1.style.backgroundColor = color2;
+  link3.style.backgroundColor = color1;
+  link2.style.backgroundColor = color1;
+  document.getElementById("about__nav__right").style.backgroundImage = "url(../../assets/images/boris.webp)";
+  document.getElementById("title__changing").innerHTML = "Choisir Infomaniak, c'est être engagé dans l'économie de demain. Vie Privée, local et durable sont les valeurs d'Infomaniak depuis 29 ans.";
+  document.getElementById("text__changing").innerHTML = "Boris siegenthaler, Co-fondateur et CSO ";
+});
 
-window.onload = function () {
-  runSplit();
+link2.addEventListener('mouseover', () => {
+  link1.style.backgroundColor = color1;
+  link3.style.backgroundColor = color1;
+  link2.style.backgroundColor = color2;
+  document.getElementById("about__nav__right").style.backgroundImage = "url(../../assets/images/test.webp)";
+  document.getElementById("title__changing").innerHTML = "Nous ne pouvons pas sauver le monde en respectant les règles actuelles, car les règles ont besoin d'être changées. Tout doit changer et cela doit être démarrer aujourd'hui.";
+  document.getElementById("text__changing").innerHTML = "Alexandre Patti, Conpliance Officer (CO)";
+});
 
-  // Sélectionnez les éléments que vous voulez animer
-  const h1 = document.querySelector('h1');
-  const h2__content = document.querySelectorAll(' .title span');
-  const links = document.querySelectorAll('li a');
-  const small = document.querySelectorAll(' h3');
-  const gallery = document.querySelector('.container__slider .right'); // Container de la galerie
+link3.addEventListener('mouseover', () => {
+  link1.style.backgroundColor = color1;
+  link3.style.backgroundColor = color2;
+  link2.style.backgroundColor = color1;
+  document.getElementById("about__nav__right").style.backgroundImage = "url(../../assets/images/hire.webp)";
+  document.getElementById("title__changing").innerHTML = "Ne venez pas travailler ici... Vous n'allez plus pouvoir repartir";
+  document.getElementById("text__changing").innerHTML = "Thibault, Front-end developer";
+});
 
+first__link.addEventListener('mouseover', () => {
+  first__link .style.backgroundColor = color2;
+  second__link .style.backgroundColor = color1;
+  last__link .style.backgroundColor = color1;
+  
 
-  // Commencez l'animation pour le h2 dès que la page est chargée
-  gsap.to(h2__content, {
-    rotateX: 0,
-    translateY: 0,
-    delay: 1,
-    duration: .7,
-    stagger: .02,
-    opacity: 1,
-    ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
-  });
+});
 
-  gsap.from(h1, {
-    delay: 0.8,
-    duration: 0.3,
-    autoAlpha: 0,
-    ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
-    y: -20
-  });
-  gsap.from(small, {
-    delay: 2.2,
-    duration: .7,
-    autoAlpha: 0,
-    stagger: .02,
-    opacity: 1,
-    ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
-    y: -20
-  });
-  gsap.from(gallery, {
-    delay: 2.6,
-    duration: .7,
-    autoAlpha: 0,
-    stagger: .02,
-    opacity: 1,
-    ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
-    y: -20
-  });
+second__link.addEventListener('mouseover', () => {
+  first__link .style.backgroundColor = color1;
+  second__link .style.backgroundColor = color2;
+  last__link .style.backgroundColor = color1;
+  nav__cursor.classList.remove('invisible');
+  nav__cursor.classList.add('invisible');
+
+});
 
 
-  // Animer chaque lien individuellement
-  links.forEach((link, index) => {
-    gsap.from(link, {
-      delay: 1.8 + index * 0.2,
-      duration: 0.5,
-      autoAlpha: 0,
-      ease: CustomEase.create("custom", "M0,0 C0.435,0.25 0.15,0.965 1,1 "),
-      y: -20
-    });
-  });
+last__link.addEventListener('mouseover', () => {
+  first__link .style.backgroundColor = color1;
+  second__link .style.backgroundColor = color1;
+  last__link .style.backgroundColor = color2;
 
-
-
-  function Marquee(selector, speed) {
-    const parentSelectors = document.querySelectorAll(selector);
-
-    parentSelectors.forEach(parentSelector => {
-      const clone = parentSelector.innerHTML;
-      const firstElement = parentSelector.children[0];
-      let i = 0;
-      let isMouseOver = false; // Variable pour suivre l'état de survol de la souris
-
-      // Arrêter le défilement lorsque la souris survole la section
-      parentSelector.addEventListener('mouseover', function () {
-        isMouseOver = true;
-      });
-
-      // Reprendre le défilement lorsque la souris quitte la section
-      parentSelector.addEventListener('mouseout', function () {
-        isMouseOver = false;
-      });
-
-      // Arrêter le défilement lorsque la souris survole les boutons
-      const buttons = parentSelector.querySelectorAll('.button__marquee');
-      buttons.forEach(function (button) {
-        button.addEventListener('mouseover', function () {
-          isMouseOver = true;
-        });
-
-        button.addEventListener('mouseout', function () {
-          isMouseOver = false;
-        });
-      });
-
-      parentSelector.insertAdjacentHTML('beforeend', clone);
-      parentSelector.insertAdjacentHTML('beforeend', clone);
-
-      setInterval(function () {
-        if (!isMouseOver) {
-          firstElement.style.marginLeft = `-${i}px`;
-          if (i > firstElement.clientWidth) {
-            i = 0;
-          }
-          i = i + speed;
-        }
-      }, 0);
-    });
-  }
-};
+});
